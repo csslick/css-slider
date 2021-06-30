@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 자동재생 배너 - 가변대응</title>
+  <style>
+    :root {
+      /* IE에선 변수 안됨 */
+      --pageWidth: 960px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #banner {
+      width: var(--pageWidth);
+      /* height: 700px; */
+      /* outline: 2px solid red; */
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .sliders {
+      /* width = banner x 이미지 장수 */
+      width: calc(var(--pageWidth) * 3);
+      animation-name: slider;
+      animation-duration: 15s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    @keyframes slider {
+      /* 
+        1.정지
+        2.2번 재생
+        3.정지
+        4.3번 재생
+        5.정지
+       */
+      0% {
+        transform: translateX(0%);
+      }
+      20% {
+        transform: translateX(0%);
+      }
+      40% {
+        transform: translateX(-33.33%);
+      }
+      60% {
+        transform: translateX(-33.33%);
+      }
+      80%{
+        transform: translateX(-66.66%);
+      }
+      100% {
+        transform: translateX(-66.66%);
+      }
+
+    }
+
+    .sliders > img {
+      width: var(--pageWidth);
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <section id="banner">
+    <div class="sliders">
+      <img src="banner1.jpg" alt="1">
+      <img src="banner2.png" alt="2">
+      <img src="banner3.png" alt="3">
+    </div>
+  </section>
+</body>
+</html>
